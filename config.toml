@@ -1,0 +1,11 @@
+mongo-url = "mongodb://root:root@mongo:27017"
+elasticsearch-urls = ["http://elasticsearch:9200"]
+direct-read-namespaces = ["domain.users"]
+change-stream-namespaces = ["domain.users"]
+verbose = true
+
+[[mapping]]
+namespace = "domain.users"
+index = "domain_users"
+type = "_doc"
+

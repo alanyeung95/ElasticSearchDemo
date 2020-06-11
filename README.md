@@ -1,6 +1,14 @@
 # ElasticSearchDemo
 A project to demo elasticsearch, kibana and monstache architecture and function
 
+# Purpose
+In real industry we are not just using mongo, but also elastic search to fetch data and bring better user experience. However, inserting data in mongo won't update elastic search in default. Monstache is a useful syncing service to keep the ES update and make the inserted data available for searching from ES.
+
+# Start
+just run `docker-compose up` to run the project
+
+## Mongo setup
+The docker will run the `mongo-setup.sh` to create DB and users
 ```
 mongo_1          | Successfully added user: {
 mongo_1          | 	"user" : "root",
@@ -24,10 +32,14 @@ mongo_1          | }
 mongo_1          | bye
 ```
 
+Assume all the mongo, elasticsearch, kibana and monstache are all up, we can insert our own data
+## Create sample data (user) in mongo
 ```
 {"_id":{"$oid":"5ec549a46640bb70315c2c7e"},"name":"Alan"}
 ```
 
+## Monstache
+Monstache is syncing data to elastic search real time
 ```
 monstache_1      | TRACE 2020/05/20 15:16:08 POST /_bulk HTTP/1.1
 monstache_1      | Host: elasticsearch:9200
@@ -52,16 +64,19 @@ monstache_1      | {"took":2065,"errors":false,"items":[{"index":{"_index":"doma
 
 ```
 
+## Kibana
+Go to kibana `http://localhost:5601` to check the index
 ```
 GET /_cat/indices
 ```
-
+will result
 ```
 yellow open domain_users         NWKOHn8HQTOnQQvzr_-AKw 5 1 1 0  4.2kb  4.2kb
 green  open .kibana_task_manager 0pAdXAZ7R9SEBsELOF5fiA 1 0 2 0 12.3kb 12.3kb
 green  open .kibana_1            dZkqkKt9QBmImTFZF8Q8VA 1 0 2 0 10.2kb 10.2kb
 ```
 
+query the user we just created in MongoDB
 ```
 GET domain_users/_search
 {
@@ -72,7 +87,7 @@ GET domain_users/_search
   }
 }
 ```
-
+here we go
 ```
 {
   "took" : 12,
@@ -101,6 +116,3 @@ GET domain_users/_search
 }
 
 ```
-
-
-

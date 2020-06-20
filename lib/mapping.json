@@ -1,0 +1,17 @@
+{
+  "mapping_version": "v1_0_1",
+  "mapping_body": {
+    "settings": {
+      "number_of_shards": 1
+    },
+    "mappings": {
+      "_doc": {
+        "properties": {
+          "components": {
+            "type": "nested"
+          }
+        }
+      }
+    }
+  }
+}

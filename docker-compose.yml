@@ -1,18 +1,17 @@
 version: "3.7"
 services:
   monstache:
-    build: 
+    build:
       context: .
     environment:
       - ES_USERS_INDEX=domain_users
     volumes:
       - ./:/app
-    command: sh -c '/app/scripts/wait-for.sh mongo.demo.network:27017 elasticsearch:9200 -- monstache -f /app/config.toml'
+    command: sh -c '/app/scripts/wait-for.sh mongo.demo.network:27017 elasticsearch:9200 -- /app/scripts/createIndex.sh && monstache -f /app/config.toml'
 
-  
   #mongo:
   #  image: mongo:4.0
-  #  ports: 
+  #  ports:
   #    - 27017:27017
   #  volumes:
   #    - ./scripts:/scripts
@@ -27,12 +26,12 @@ services:
 
   elasticsearch:
     image: elasticsearch:6.8.5
-    ports: 
+    ports:
       - 9200:9200
 
   kibana:
     image: kibana:6.8.5
-    ports: 
+    ports:
       - 5601:5601
 
 #volumes:

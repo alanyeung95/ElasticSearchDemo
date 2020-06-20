@@ -11,5 +11,5 @@ type = "_doc"
 
 [[mapping]]
 namespace = "domain.items"
-index = "domain_items"
+index = "domain_items_v1_0_1"
 type = "_doc"

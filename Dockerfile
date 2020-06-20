@@ -1,7 +1,7 @@
 ### Build
 FROM golang:1.13-alpine3.10 AS builder
 
-# Dependency
+# Dependencies
 RUN apk add --no-cache git gcc g++
 
 # Compile app with rest of source

@@ -2,6 +2,14 @@
 
 A project to demo elasticsearch, kibana and monstache architecture and function
 
+This repo is one of the microservices. Other related repo is <b>GoProjectDemo</b> and <b>vue-project-demo</b>
+
+Please setup the project under this order:
+
+1. GoProjectDemo
+2. ElasticSearchDemo
+3. vue-project-demo
+
 # Purpose
 
 In real industry we are not just using mongo, but also elastic search to fetch data and bring better user experience. However, inserting data in mongo won't update elastic search in default. Monstache is a useful syncing service to keep the ES update and make the inserted data available for searching from ES.

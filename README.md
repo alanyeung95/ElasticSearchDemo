@@ -170,6 +170,35 @@ GET domain_items/_search
 }
 ```
 
+# Development Notes
+
+## Debug your index mapping and setting
+
+Create index first
+```
+PUT /testing_index_updated
+```
+
+Disable index for usage before updating its setting and mapping
+```
+POST /testing_index_updated/_close
+```
+
+Update setting
+```
+PUT /testing_index_updated/_settings
+```
+
+Update mapping
+```
+PUT /testing_index_update/_mapping/_doc
+```
+
+reactivate the index, otherwise we will get `index_closed_exception`
+```
+POST /testing_index_updated/_open 
+```
+
 # Todo list:
 
 - [ ] Add querying nested object example
